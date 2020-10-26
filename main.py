@@ -1,5 +1,6 @@
-#import lights
+import lights
 import covid_tier_lookup
+import sys
 
 from time import sleep
 
@@ -8,7 +9,9 @@ covidTierLookup = covid_tier_lookup.CovidTierLookup()
 
 def callback(tier):
 	print("callback with tier " + str(tier))
+	lights.set(tier)
 
+print("lookup " + sys.argv[1])
 while (True):
-	covidTierLookup.lookup(argv[0] callback)
+	covidTierLookup.lookup(sys.argv[1], callback)
 	sleep(1800)
